@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17421A1D2718DAF900ADAD18 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17421A1C2718DAF900ADAD18 /* main.cpp */; };
+		176F503A2719712E0002E938 /* UTF8CharList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 176F50382719712E0002E938 /* UTF8CharList.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		17421A192718DAF900ADAD18 /* lanUTF */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lanUTF; sourceTree = BUILT_PRODUCTS_DIR; };
 		17421A1C2718DAF900ADAD18 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		176F50382719712E0002E938 /* UTF8CharList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UTF8CharList.cpp; sourceTree = "<group>"; };
+		176F50392719712E0002E938 /* UTF8CharList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UTF8CharList.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				17421A1C2718DAF900ADAD18 /* main.cpp */,
+				176F50382719712E0002E938 /* UTF8CharList.cpp */,
+				176F50392719712E0002E938 /* UTF8CharList.hpp */,
 			);
 			path = lanUTF;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				176F503A2719712E0002E938 /* UTF8CharList.cpp in Sources */,
 				17421A1D2718DAF900ADAD18 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

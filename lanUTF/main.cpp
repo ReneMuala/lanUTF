@@ -6,9 +6,20 @@
 //
 
 #include <iostream>
+#include <string>
+#include <bitset> // <3
+
+#include "UTF8CharList.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    UTF8CharList list;
+    
+    list.composeUTF8Char("á");
+    
+    list.append("álls");
+    
+    std::cout << list.c_char();
+
     return 0;
 }
+
