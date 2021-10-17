@@ -38,6 +38,10 @@ A **UTF8 character list** is a string of UTF8 encoded characters, as “rené”
 
    Returns the length of list.
 
+#### `size_t c_str_size() const`
+
+   Returns the length of a possible C string version of the list.
+
 #### `bool empty() const`
 
    Returns true if the list is empty.
@@ -49,6 +53,10 @@ A **UTF8 character list** is a string of UTF8 encoded characters, as “rené”
 #### `char * alloc_c_str() const`
 
    Allocates a C string version of the list.
+
+#### `void composeCStr(char * str, size_t size) const`
+
+   Composes a C string version of the list.
 
 #### `static void free_c_str(char * str)`
 
@@ -65,3 +73,4 @@ A **UTF8 character list** is a string of UTF8 encoded characters, as “rené”
 #### `void clear()`
 
    Clears the list.
+

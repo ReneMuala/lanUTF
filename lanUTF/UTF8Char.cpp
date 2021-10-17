@@ -39,7 +39,6 @@ UTF8Char::UTF8_OctetType const UTF8Char::_get_octetType(const uint8_t value){
     }
 }
 
-
 void UTF8Char::_readUTF8_4o(char *source){
     if(_byte_match(*source, UTF8_4o_format, 5)){
         data[0] = *source;

@@ -103,6 +103,9 @@ public:
     /// returns the length of list
     size_t size() const;
     
+    /// returns the length of a possible C string version of the list
+    size_t c_str_size() const;
+    
     /// returns true if the list is empty
     bool empty() const;
     
@@ -116,6 +119,9 @@ public:
     
     /// allocates a C string version of the list
     char * alloc_c_str() const;
+    
+    /// composes a C string version of the list
+    void composeCStr(char * str, size_t size) const;
 
     /// frees an allocated C string
     static void free_c_str(char * str);
