@@ -12,14 +12,25 @@
 #include "UTF8CharList.hpp"
 
 int main(int argc, const char * argv[]) {
-    UTF8CharList list;
+    UTF8CharList string;
     
-    list.composeUTF8Char("á");
+    string.append(" Hello world 🤗🥰");
     
-    list.append("álls");
+    string.append("😝😄🙃", 0);
     
-    std::cout << list.c_char();
-
+    string.remove(0);
+        
+    for(int i = 0 ; i < string.size() ; i++){
+        std::cout << string[i] << ",";
+    }
+    std::cout << std::endl;
+    
+    char * c_string = string.alloc_c_str();
+    
+    std::cout << c_string << std::endl;
+    
+    string.free_c_str(c_string);
+        
     return 0;
 }
 

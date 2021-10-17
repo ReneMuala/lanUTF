@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		17421A1D2718DAF900ADAD18 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17421A1C2718DAF900ADAD18 /* main.cpp */; };
-		176F503A2719712E0002E938 /* UTF8CharList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 176F50382719712E0002E938 /* UTF8CharList.cpp */; };
+		176F503A2719712E0002E938 /* UTF8Char.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 176F50382719712E0002E938 /* UTF8Char.cpp */; };
+		17A43EB2271B04200063E2F3 /* UTF8CharList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A43EB1271B04200063E2F3 /* UTF8CharList.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,8 +27,10 @@
 /* Begin PBXFileReference section */
 		17421A192718DAF900ADAD18 /* lanUTF */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lanUTF; sourceTree = BUILT_PRODUCTS_DIR; };
 		17421A1C2718DAF900ADAD18 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		176F50382719712E0002E938 /* UTF8CharList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UTF8CharList.cpp; sourceTree = "<group>"; };
+		176F50382719712E0002E938 /* UTF8Char.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UTF8Char.cpp; sourceTree = "<group>"; };
 		176F50392719712E0002E938 /* UTF8CharList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UTF8CharList.hpp; sourceTree = "<group>"; };
+		17A43EB1271B04200063E2F3 /* UTF8CharList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UTF8CharList.cpp; sourceTree = "<group>"; };
+		17A43EB5271C39C20063E2F3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +47,7 @@
 		17421A102718DAF900ADAD18 = {
 			isa = PBXGroup;
 			children = (
+				17A43EB5271C39C20063E2F3 /* README.md */,
 				17421A1B2718DAF900ADAD18 /* lanUTF */,
 				17421A1A2718DAF900ADAD18 /* Products */,
 			);
@@ -61,7 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				17421A1C2718DAF900ADAD18 /* main.cpp */,
-				176F50382719712E0002E938 /* UTF8CharList.cpp */,
+				176F50382719712E0002E938 /* UTF8Char.cpp */,
+				17A43EB1271B04200063E2F3 /* UTF8CharList.cpp */,
 				176F50392719712E0002E938 /* UTF8CharList.hpp */,
 			);
 			path = lanUTF;
@@ -123,7 +128,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				176F503A2719712E0002E938 /* UTF8CharList.cpp in Sources */,
+				17A43EB2271B04200063E2F3 /* UTF8CharList.cpp in Sources */,
+				176F503A2719712E0002E938 /* UTF8Char.cpp in Sources */,
 				17421A1D2718DAF900ADAD18 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

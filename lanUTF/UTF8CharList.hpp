@@ -12,9 +12,11 @@
 #include <stdlib.h>
 #include <bitset>
 
-class UTF8CharList {
+#define lanUTFVersion "lanUTF 0.1"
+
+class UTF8Char {
 public:
-    
+        
     const std::bitset<8> UTF8_intermetidate_byte = 0x80;
     
     const std::bitset<8> UTF8_1o_format = 0x00;
@@ -43,58 +45,90 @@ private:
     char data[4];
     
     UTF8_OctetType octetType;
-    
-    UTF8CharList * next;
-    
-    UTF8CharList * generateNext();
-    
-    void removeNext();
-    
+                
 public:
     
-    bool byte_match(const std::bitset<8> src, const std::bitset<8> fmt, size_t n);
+    UTF8Char * _createNext();
     
-    UTF8_OctetType const get_octetType(uint8_t const);
+    UTF8Char * _appendNext();
     
-    void readUTF8_4o(char * source);
+    UTF8Char * _next;
     
-    void readUTF8_3o(char * source);
+    bool _byte_match(const std::bitset<8> src, const std::bitset<8> fmt, size_t n);
     
-    void readUTF8_2o(char * source);
+    UTF8_OctetType const _get_octetType(uint8_t const);
     
-    void readUTF8_1o(char * source);
+    void _readUTF8_4o(char * source);
     
+    void _readUTF8_3o(char * source);
+    
+    void _readUTF8_2o(char * source);
+    
+    void _readUTF8_1o(char * source);
+    
+    /// composes a new  character from UTF8 encoded source
     void composeUTF8Char(char * source);
     
-    void append(const char * other);
-    
+    /// copies data from another UTF8Char
+    void copy(UTF8Char & other);
+
+    /// returns the c_char encoded version of the UTF8 char
     char const * c_char() const;
     
+    /// returns the UTF8 octet type of the character.
     UTF8_OctetType const octet() const;
     
-    // TODO: IMPLEMENT
-    size_t c_str(char * dst) const;
-    
-    /// Clear all Chars in the list
-    void clearAll(){
-        clear();
-        if(next){
-            next->clearAll();
-        }
-    }
-    
-    /// Clear this char
+    /// clears the character
     void clear(){
         for(int i = 0 ; i < 4 ; i++)
         data[i] = '\0';
     }
     
-    UTF8CharList * last() const;
+    UTF8Char * _at(size_t index) const;
+    
+    UTF8Char * _last() const;
         
+    UTF8Char();
+    
+    UTF8Char(char *);
+    
+    ~UTF8Char();
+    
+};
+
+class UTF8CharList {
+    UTF8Char * first;
+public:
+    
+    /// returns the length of list
+    size_t size() const;
+    
+    /// returns true if the list is empty
+    bool empty() const;
+    
+    const char * operator[](size_t index) const;
+    
+    /// removes a specified UTF8 character
+    void remove(size_t index);
+    
+    /// allocates a C string version of the list
+    char * alloc_c_str() const;
+
+    /// frees an allocated C string
+    static void free_c_str(char * str);
+    
+    /// adds characters to the end of the list
+    void append(const char * str);
+    
+    /// adds characters to a specified position of the list or to the end if the index isn't valid
+    void append(const char * str, size_t index);
+    
+    /// clears the list
+    void clear();
+    
     UTF8CharList();
     
     ~UTF8CharList();
-    
 };
 
 #endif /* UTF8CharList_hpp */
