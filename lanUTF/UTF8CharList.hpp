@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <bitset>
 
-#define lanUTFVersion "lanUTF 0.1"
+#define lanUTFVersion "lanUTF 0.1.1"
 
 class UTF8Char {
 public:
@@ -110,6 +110,9 @@ public:
     
     /// removes a specified UTF8 character
     void remove(size_t index);
+    
+    /// removes the last UTF8 character
+    void remove_last();
     
     /// allocates a C string version of the list
     char * alloc_c_str() const;

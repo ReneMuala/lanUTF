@@ -34,18 +34,38 @@ const char * UTF8CharList::operator[](size_t index) const {
 void UTF8CharList::remove(size_t index){
     size_t subIndex = 0;
     UTF8Char * ptr = first, * last = nullptr;
-    while (ptr) {
+    if(ptr){
+        while (ptr && subIndex < index) {
+            subIndex++;
+            last = ptr;
+            ptr = ptr->_next;
+        }
+        
         if(subIndex == index) {
-            if(last) last->_next = ptr->_next;
             if(ptr == first) {
-                if(last)
-                    first = last;
-                else
-                    first = ptr->_next;
-            } delete ptr;
-        } subIndex++;
-        last = ptr;
-        ptr = ptr->_next;
+                first = ptr->_next;
+            } else if(last)
+                last->_next = ptr->_next;
+            
+            delete ptr;
+        } else
+            printf("%s\n", ("[" + std::string(lanUTFVersion) + " Warning]: " + "invalid range [" + std::to_string(index) +"], unable to remove char.").c_str());
+    }
+}
+
+void UTF8CharList::remove_last(){
+    UTF8Char * ptr = first, * last = nullptr;
+    if(ptr){
+        while (ptr->_next) {
+            last = ptr;
+            ptr = ptr->_next;
+        }
+
+        if(ptr == first) {
+            first = nullptr;
+        } else {
+            last->_next = nullptr;
+        } delete ptr;
     }
 }
 
@@ -125,7 +145,7 @@ void UTF8CharList::append(const char * src, size_t index) {
             } last_ptr=last_ptr->_next;
         }
     } else {
-        printf("%s", ("[" + std::string(lanUTFVersion) + " Error]: " + "invalid range [" + std::to_string(index) +"], using default append(...) method.").c_str());
+        printf("%s\n", ("[" + std::string(lanUTFVersion) + " Warning]: " + "invalid range [" + std::to_string(index) +"], using default append(...) method.").c_str());
         append(src);
     }
 }
