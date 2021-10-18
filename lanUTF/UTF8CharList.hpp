@@ -127,10 +127,10 @@ public:
     static void free_c_str(char * str);
     
     /// adds characters to the end of the list
-    void append(const char * str);
+    size_t append(const char * str);
     
     /// adds characters to a specified position of the list or to the end if the index isn't valid
-    void append(const char * str, size_t index);
+    size_t append(const char * str, size_t index);
     
     /// clears the list
     void clear();

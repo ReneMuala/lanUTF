@@ -62,11 +62,11 @@ A **UTF8 character list** is a string of UTF8 encoded characters, as “rené”
 
    Frees an allocated C string.
 
-#### `void append(const char * str)`
+#### `size_t append(const char * str)`
 
    Adds characters to the end of the list.
 
-#### `void append(const char * str, size_t index)`
+#### `size_t append(const char * str, size_t index)`
 
    adds characters to a specified position of the list or to the end if the index isn't valid.
 

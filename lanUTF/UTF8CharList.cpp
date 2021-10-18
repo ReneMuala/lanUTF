@@ -101,11 +101,13 @@ void UTF8CharList::free_c_str(char * str){
     free(str);
 }
 
-void UTF8CharList::append(const char * src){
+size_t UTF8CharList::append(const char * src){
     UTF8Char * last_ptr = first ? first->_last() : nullptr;
     char src_cpy [strlen(src)], *src_cpy_ptr = src_cpy;
     strcpy(src_cpy, src);
+    size_t append_len = 0;
     while (*src_cpy_ptr) {
+        append_len++;
         if(last_ptr){
             last_ptr->_createNext();
             last_ptr=last_ptr->_next;
@@ -132,16 +134,17 @@ void UTF8CharList::append(const char * src){
                 src_cpy_ptr++;
                 break;
         }
-    }
+    } return append_len;
 }
 
-void UTF8CharList::append(const char * src, size_t index) {
+size_t UTF8CharList::append(const char * src, size_t index) {
     UTF8Char * last_ptr = first->_at(index);
     char src_cpy [strlen(src)], *src_cpy_ptr = src_cpy;
     strcpy(src_cpy, src);
+    size_t append_len = 0;
     if(last_ptr){
         while (*src_cpy_ptr) {
-            
+            append_len++;
             last_ptr->_appendNext();
             last_ptr->_next->copy(*last_ptr);
             last_ptr->composeUTF8Char(src_cpy_ptr);
@@ -165,8 +168,8 @@ void UTF8CharList::append(const char * src, size_t index) {
         }
     } else {
         printf("%s\n", ("[" + std::string(lanUTFVersion) + " Warning]: " + "invalid range [" + std::to_string(index) +"], using default append(...) method.").c_str());
-        append(src);
-    }
+        return append(src);
+    } return append_len;
 }
 
 void UTF8CharList::clear(){
