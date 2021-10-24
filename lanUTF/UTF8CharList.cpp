@@ -195,7 +195,7 @@ void UTF8CharList::clear(){
 }
 
 UTF8CharList::UTF8CharList(): first(nullptr){
-    
+    clear();
 }
 
 UTF8CharList::~UTF8CharList(){
