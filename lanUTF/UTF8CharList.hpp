@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <bitset>
 
-#define lanUTFVersion "lanUTF 0.1.1"
+#define lanUTFVersion "lanUTF 0.1.2"
 
 class UTF8Char {
 public:
@@ -105,6 +105,9 @@ public:
     
     /// returns the length of a possible C string version of the list
     size_t c_str_size() const;
+    
+    /// returns the index of this UTF8Char in a possible C string
+    size_t c_index_at(const size_t index) const;
     
     /// returns true if the list is empty
     bool empty() const;

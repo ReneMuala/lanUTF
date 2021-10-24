@@ -26,6 +26,16 @@ size_t UTF8CharList::c_str_size() const {
     } return size;
 }
 
+size_t UTF8CharList::c_index_at(const size_t index) const {
+    size_t size = 0, subindex = 0;
+    UTF8Char * ptr = first;
+    while (ptr && subindex <= index) {
+        size += strlen(ptr->c_char());
+        ptr = ptr->_next;
+        subindex++;
+    } return size;
+}
+
 bool UTF8CharList::empty() const {
     return first;
 }
