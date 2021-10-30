@@ -36,6 +36,16 @@ size_t UTF8CharList::c_index_at(const size_t index) const {
     } return size;
 }
 
+size_t UTF8CharList::c_index_before(const size_t index) const {
+    size_t size = 0, subindex = 0;
+    UTF8Char * ptr = first;
+    while (ptr && subindex < index) {
+        size += strnlen(ptr->c_char(),4);
+        ptr = ptr->_next;
+        subindex++;
+    } return size;
+}
+
 bool UTF8CharList::empty() const {
     return first;
 }
@@ -90,7 +100,7 @@ void UTF8CharList::remove_last(){
 
 char * UTF8CharList::alloc_c_str() const {
     UTF8Char * ptr = first;
-    char * c_str = new char('\0');
+    char * c_str = new char[c_str_size()];
     while (ptr) {
         strcat(c_str, ptr->c_char());
         ptr = ptr->_next;
@@ -108,7 +118,7 @@ void UTF8CharList::composeCStr(char *str, size_t size) const {
 }
 
 void UTF8CharList::free_c_str(char * str){
-    free(str);
+    delete [] str;
 }
 
 size_t UTF8CharList::append(const char * src){

@@ -109,6 +109,9 @@ public:
     /// returns the index of this UTF8Char in a possible C string
     size_t c_index_at(const size_t index) const;
     
+    /// returns the index of the UTF8Char before this in a possible C string
+    size_t c_index_before(const size_t index) const;
+    
     /// returns true if the list is empty
     bool empty() const;
     
