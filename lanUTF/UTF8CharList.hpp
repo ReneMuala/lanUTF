@@ -92,6 +92,8 @@ public:
     
     UTF8Char(char *);
     
+    UTF8Char(const char *);
+    
     ~UTF8Char();
     
 };
