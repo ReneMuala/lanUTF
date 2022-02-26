@@ -51,6 +51,10 @@ bool UTF8CharList::empty() const {
 }
 
 const char * UTF8CharList::operator[](size_t index) const {
+    return char_at(index);
+}
+
+const char * UTF8CharList::char_at(size_t index) const {
     size_t subIndex = 0;
     UTF8Char * ptr = first;
     while (ptr) {
@@ -58,6 +62,16 @@ const char * UTF8CharList::operator[](size_t index) const {
         subIndex++;
         ptr = ptr->_next;
     } return nullptr;
+}
+
+unsigned int UTF8CharList::charcode_at(size_t index) const {
+    size_t subIndex = 0;
+    UTF8Char * ptr = first;
+    while (ptr) {
+        if(subIndex == index) return ptr->get_charcode();
+        subIndex++;
+        ptr = ptr->_next;
+    } return 0;
 }
 
 void UTF8CharList::remove(size_t index){
@@ -79,9 +93,8 @@ void UTF8CharList::remove(size_t index){
             delete ptr;
         }
 #ifdef LANUTF_DEBUG_MODE
-        
         else
-            printf("%s\n", ("[" + std::string(lanUTFVersion) + " Warning]: " + "invalid range [" + std::to_string(index) +"], unable to remove char.").c_str());
+            fprintf(stderr,"%s\n", ("[" + std::string(lanUTFVersion) + " Warning]: " + "invalid range [" + std::to_string(index) +"], unable to remove char.").c_str());
 #endif
     }
 }
@@ -210,7 +223,7 @@ size_t UTF8CharList::append(const char * src, size_t index) {
         }
     } else {
 #ifdef LANUTF_DEBUG_MODE
-        printf("%s\n", ("[" + std::string(lanUTFVersion) + " Warning]: " + "invalid range [" + std::to_string(index) +"], using default append(...) method.").c_str());
+        fprintf(stderr,"%s\n", ("[" + std::string(lanUTFVersion) + " Warning]: " + "invalid range [" + std::to_string(index) +"], using default append(...) method.").c_str());
 #endif
         return append(src);
     } return append_len;
@@ -230,7 +243,7 @@ size_t UTF8CharList::append(std::list<const unsigned int> codes, size_t index){
         } return append_len;
     } else {
 #ifdef LANUTF_DEBUG_MODE
-        printf("%s\n", ("[" + std::string(lanUTFVersion) + " Warning]: " + "invalid range [" + std::to_string(index) +"], using default append(...) method.").c_str());
+        fprintf(stderr,"%s\n", ("[" + std::string(lanUTFVersion) + " Warning]: " + "invalid range [" + std::to_string(index) +"], using default append(...) method.").c_str());
 #endif
         return append(codes);
     }

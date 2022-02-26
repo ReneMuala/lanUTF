@@ -150,6 +150,12 @@ public:
     
     const char * operator[](size_t index) const;
     
+    /// returns the character at the given index (if possible)
+    const char * char_at(size_t index) const;
+    
+    /// returns the charcode at the given index (if possible)
+    unsigned int charcode_at(size_t index) const;
+    
     /// removes a specified UTF8 character
     void remove(size_t index);
     

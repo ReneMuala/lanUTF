@@ -6,7 +6,7 @@
 ## Whats new in version 0.1.6
 
 - Debugging methods added
-    - Tests passed for all <strong>2097023</strong> unicode characters.
+    - <strong>(UTF8Char)</strong> tests passed for all <strong>2097023</strong> unicode characters.
 
 # `UTF8Char`
 
